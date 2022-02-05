@@ -21,5 +21,23 @@
         </nav>
     </header>
 
-    {% block content %} {% endblock %}
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Desenvolvido por Victor Gabriel Marques</small>
+        </div>
+    </footer>
 </body>
+
+<style>
+    html, main {
+        min-height: calc(100vh - 128px);
+    }
+
+    footer {
+        flex-shrink: 0;
+    }
+</style>
