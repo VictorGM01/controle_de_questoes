@@ -10,6 +10,6 @@ class Lista(models.Model):
     tipo = models.CharField(max_length=60)
     acertos = models.IntegerField()
     erros = models.IntegerField()
-    descricao_erros = models.CharField(max_length=300)
+    descricao_erros = models.CharField(max_length=300, blank=True, null=True)
     tempo_realizacao = models.IntegerField()
     data_realizacao = models.DateField(default=datetime.today)
