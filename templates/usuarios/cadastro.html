@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h2 class="text-center">Criar Conta</h2>
     <form method="POST" action="{% url 'cadastro' %}">{% csrf_token %}
         <div class="form-group">
             <label for="nome">Nome completo</label>

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h2 class="text-center">Entrar</h2>
     <form method="POST" action="{% url 'login' %}">{% csrf_token %}
         <div class="form-group">
             <label for="exampleInputEmail1">Email</label>
