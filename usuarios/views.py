@@ -32,7 +32,29 @@ def cadastro(request):
 
 
 def login(request):
-    pass
+    if request.method == 'POST':
+        email = request.POST['email']
+        senha = request.POST['password']
+
+        if not senha.strip() or not email.strip():
+            return redirect('login')
+
+        elif User.objects.filter(email=email).exists():
+            nome = User.objects.filter(email=email).values_list('username', flat=True).get()
+
+            user = auth.authenticate(request, username=nome, password=senha)
+
+            if user is not None:
+                auth.login(request, user)
+                return redirect('index')
+
+            else:
+                return redirect('login')
+
+        else:
+            return redirect('login')
+
+    return render(request, 'usuarios/login.html')
 
 
 def dashboard(request):
