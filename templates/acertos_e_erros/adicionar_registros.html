@@ -3,7 +3,8 @@
     <form method="POST" action="{% url 'add-registro' %}">{% csrf_token %}
         <div class="form-group">
             <label for="exampleFormControlSelect1">Matéria</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select name="materia" class="form-control" id="exampleFormControlSelect1" required>
+                <option selected disabled value="">Selecione</option>
                 {% for materia in materias %}
                     <option value="{{ materia }}">{{ materia }}</option>
                 {% endfor %}
@@ -41,6 +42,6 @@
             <label for="data">Data da Realização</label>
             <input name="data" class="form-control" type="date" required>
         </div>
-        <button type="submit" class="btn btn-success">Criar sua conta</button>
+        <button type="submit" class="btn btn-success">Adicionar</button>
     </form>
 {% endblock %}

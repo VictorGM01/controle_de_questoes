@@ -10,6 +10,7 @@ def index(request):
 
 def adicionar_registro(request):
     if request.method == 'POST':
+        materia = request.POST['materia']
         nome_lista = request.POST['nome_lista']
         quantidade_questoes = request.POST['quantidade_questoes']
         tipo = request.POST['tipo']
@@ -21,7 +22,8 @@ def adicionar_registro(request):
 
         user = get_object_or_404(User, pk=request.user.id)
 
-        nova_lista = Lista.objects.create(usuario=user, nome_da_lista=nome_lista, quantidade_questoes=quantidade_questoes,
+        nova_lista = Lista.objects.create(usuario=user, nome_da_lista=nome_lista, materia=materia,
+                                          quantidade_questoes=quantidade_questoes,
                                           tipo=tipo, acertos=acertos, erros=erros, descricao_erros=descricao,
                                           tempo_realizacao=time, data_realizacao=data)
 
