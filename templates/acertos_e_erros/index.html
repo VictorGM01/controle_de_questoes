@@ -6,12 +6,12 @@
             <p class="lead text-muted">Acompanhe seu desempenho nas atividades/listas de questões, anotando o quanto você acertou e o quanto você errou em cada uma delas.</p>
             {% if user.is_authenticated %}
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Adicionar Registro</a>
+                    <a href="{% url 'add-registro' %}" class="btn btn-primary my-2">Adicionar Registro</a>
                 </p>
             {% else %}
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Entrar</a>
-                    <a href="#" class="btn btn-secondary my-2">Criar Conta</a>
+                    <a href="{% url 'login' %}" class="btn btn-primary my-2">Entrar</a>
+                    <a href="{% url 'cadastro' %}" class="btn btn-secondary my-2">Criar Conta</a>
                 </p>
             {% endif %}
         </div>
