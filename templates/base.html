@@ -21,8 +21,10 @@
         </nav>
     </header>
 
-    <main>
-        {% block content %} {% endblock %}
+    <main class="content" style="margin-top: 2rem">
+        <div class="container">
+            {% block content %} {% endblock %}
+        </div>
     </main>
 
     <footer class="py-4 bg-dark text-white-50">
@@ -34,7 +36,7 @@
 
 <style>
     html, main {
-        min-height: calc(100vh - 128px);
+        min-height: calc(100vh - 160px);
     }
 
     footer {
