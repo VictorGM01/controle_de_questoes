@@ -1,9 +1,11 @@
 from django.db import models
 from datetime import datetime
 from .materias import Materia
+from django.contrib.auth.models import User
 
 
 class Lista(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     materia = models.TextField(max_length=15, choices=Materia.choices)
     nome_da_lista = models.CharField(max_length=100)
     quantidade_questoes = models.IntegerField()
