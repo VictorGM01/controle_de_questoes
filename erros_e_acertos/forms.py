@@ -11,7 +11,8 @@ class CadastroForms(forms.ModelForm):
 
     class Meta:
         model = Lista
-        fields = '__all__'
+        fields = ['materia', 'nome_da_lista', 'quantidade_questoes', 'tipo', 'acertos', 'erros', 'descricao_erros',
+                  'tempo_realizacao', 'data_realizacao']
         labels = {'materia': 'Matéria', 'nome_da_lista': 'Nome da Lista', 'quantidade_questoes': 'Número de Questões',
                   'tipo': 'Tipo da Lista', 'acertos': 'Quantidade de Acertos', 'erros': 'Quantidade de Erros',
                   'descricao_erros': 'Descrição do Erro', 'tempo_realizacao': 'Tempo para Realização'}

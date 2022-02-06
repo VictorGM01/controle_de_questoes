@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+         <div class="row">
+             <div class="col-12">
+                 <div class="section-heading">
+                     <h3>Olá, {{ user.username }}</h3>
+                 </div>
+             </div>
+         </div>
+    </div>
+
+    <a href="{% url 'add-registro' %}">
+        <button type="button" class="btn btn-success" style="float: right; margin-bottom: 2rem">Adicionar</button>
+    </a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Matéria</th>
+                <th>Tipo da Lista</th>
+                <th>N° de Questões</th>
+                <th>Acertos</th>
+                <th>Erros</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lista in listas %}
+                <tr>
+                    <td>{{ lista.materia }}</td>
+                    <td>{{ lista.tipo }}</td>
+                    <td>{{ lista.quantidade_questoes }}</td>
+                    <td>{{ lista.acertos }}</td>
+                    <td>{{ lista.erros }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from erros_e_acertos.models import Lista
 
 
 def cadastro(request):
@@ -25,7 +26,7 @@ def cadastro(request):
         user = User.objects.create_user(username=nome, email=email, password=senha)
         user.save()
 
-        return redirect('index')
+        return redirect('login')
 
     else:
         return render(request, 'usuarios/cadastro.html')
@@ -46,7 +47,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                return redirect('index')
+                return redirect('dashboard')
 
             else:
                 return redirect('login')
@@ -58,7 +59,17 @@ def login(request):
 
 
 def dashboard(request):
-    pass
+    if request.user.is_authenticated:
+        id_user = request.user.id
+        listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)
+
+        dados = {
+             'listas': listas
+         }
+        return render(request, 'usuarios/dashboard.html', dados)
+
+    else:
+        return redirect('index')
 
 
 def logout(request):
