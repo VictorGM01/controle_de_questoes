@@ -13,17 +13,24 @@
     <header>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <!-- Classes do bootstrap -->
             <a class="navbar-brand" href="{% url "index" %}">Controle</a>
+
+            {% if user.is_authenticated %}
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Acertos e Erros</a>
+                    <a class="nav-link" href="{% url 'dashboard' %}">Acertos e Erros</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Sair</a>
                 </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'cadastro' %}">Cadastro</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
             </ul>
+            {% endif %}
         </nav>
     </header>
 
