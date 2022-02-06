@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-{#    <a href="{% url 'add-registro' %}">#}
-{#        <button style="margin-bottom: 2rem" type="button" class="btn btn-outline-success">Adicionar</button>#}
-{#    </a>#}
-    <h1>Seja Muito Bem-Vindo(a)!</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Controle seu desempenho nas atividades</h1>
+            <p class="lead text-muted">Acompanhe seu desempenho nas atividades/listas de questões, anotando o quanto você acertou e o quanto você errou em cada uma delas.</p>
+            {% if user.is_authenticated %}
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Adicionar Registro</a>
+                </p>
+            {% else %}
+                <p>
+                    <a href="#" class="btn btn-primary my-2">Entrar</a>
+                    <a href="#" class="btn btn-secondary my-2">Criar Conta</a>
+                </p>
+            {% endif %}
+        </div>
+    </section>
 {% endblock %}
