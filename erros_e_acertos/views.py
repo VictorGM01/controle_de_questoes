@@ -55,3 +55,7 @@ def editar_lista(request, id_lista):
     }
 
     return render(request, 'acertos_e_erros/editar_lista.html', contexto)
+
+
+def atualizar_lista(request):
+    pass
