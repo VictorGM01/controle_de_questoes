@@ -62,6 +62,13 @@ def login(request):
         else:
             return redirect('login')
 
+    if request.method == 'GET':
+
+        if request.user.is_authenticated:
+            return redirect('index')
+
+        return render(request, 'usuarios/login.html')
+
     return render(request, 'usuarios/login.html')
 
 
