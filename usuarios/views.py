@@ -76,10 +76,14 @@ def dashboard(request):
 
         if materia or tipo:
 
-            if not tipo:
-                tipo = 'simulado'
+            if not tipo and materia != 'todas':
+                listas = Lista.objects.filter(materia=materia).filter(usuario=id_user)
 
-            listas = Lista.objects.filter(materia=materia).filter(tipo__icontains=tipo).filter(usuario=id_user)
+            if materia == 'todas':
+                listas = Lista.objects.filter(tipo__icontains=tipo).filter(usuario=id_user)
+
+            else:
+                listas = Lista.objects.filter(materia=materia).filter(tipo__icontains=tipo).filter(usuario=id_user)
 
         else:
             listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)

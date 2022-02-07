@@ -26,6 +26,7 @@
                         <div class="form-group">
                             <label for="materia">Matéria</label>
                             <select name="materia" class="form-control">
+                                <option value="todas">Todas</option>
                                 {% for materia in materias %}
                                     <option value="{{materia}}">{{materia}}</option>
                                 {% endfor %}
