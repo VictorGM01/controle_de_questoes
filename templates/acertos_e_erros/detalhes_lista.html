@@ -1,6 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ lista.nome_da_lista }} de {{ lista.materia }}</h1>
+        </div>
+    </section>
+    <div class="container">
+        <div class="col-md-4">
+            <h2>Informações</h2>
+            <h6>Matéria: {{ lista.materia }}</h6>
+            <h6>Nome: {{ lista.nome_da_lista }}</h6>
+            <h6>Tipo da Lista: {{ lista.tipo }}</h6>
+            <h6>Questões: {{ lista.quantidade_questoes }}</h6>
+            <h6>Acertos: {{ lista.acertos }}</h6>
+            <h6><a href="" data-toggle="modal" data-target="#staticBackdrop">Erros: {{ lista.erros }}</a></h6>
+            <h6>Data da Realização: {{ lista.data_realizacao }}</h6>
+            <h6>Duração: {{ lista.tempo_realizacao }} minutos</h6>
 
-
+        </div>
+    </div>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Descrição do Erro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% if lista.descricao_erros %}
+                            {{ lista.descricao_erros }}
+                        {% else %}
+                            Não há descrição armazenada
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

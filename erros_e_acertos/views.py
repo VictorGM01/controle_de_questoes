@@ -36,5 +36,11 @@ def adicionar_registro(request):
     return render(request, 'acertos_e_erros/adicionar_registros.html', contexto)
 
 
-def detalhar_lista(request):
-    pass
+def detalhar_lista(request, id_lista):
+    lista_a_exibir = get_object_or_404(Lista, pk=id_lista)
+
+    contexto = {
+        'lista': lista_a_exibir
+    }
+
+    return render(request, 'acertos_e_erros/detalhes_lista.html', contexto)

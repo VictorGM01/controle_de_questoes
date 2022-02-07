@@ -18,6 +18,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Lista</th>
                 <th>Matéria</th>
                 <th>Tipo da Lista</th>
                 <th>N° de Questões</th>
@@ -28,6 +29,7 @@
         <tbody>
             {% for lista in listas %}
                 <tr>
+                    <td><a href="{% url 'detalhes-listas' lista.id%}">{{ lista.nome_da_lista }}</a></td>
                     <td>{{ lista.materia }}</td>
                     <td>{{ lista.tipo }}</td>
                     <td>{{ lista.quantidade_questoes }}</td>
