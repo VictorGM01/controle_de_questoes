@@ -76,7 +76,7 @@ def atualizar_lista(request):
 
         lista_a_atualizar.save()
 
-        return redirect('detalhes-listas')
+        return redirect(f'detalhes/{lista_id}')
 
     else:
         return redirect('index')
