@@ -44,3 +44,7 @@ def detalhar_lista(request, id_lista):
     }
 
     return render(request, 'acertos_e_erros/detalhes_lista.html', contexto)
+
+
+def editar_lista(request, id_lista):
+    pass
