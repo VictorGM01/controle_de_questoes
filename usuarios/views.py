@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from erros_e_acertos.models import Lista
+from erros_e_acertos.models import Lista, Materia
 
 
 def cadastro(request):
@@ -72,9 +72,12 @@ def dashboard(request):
         id_user = request.user.id
         listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)
 
+        materias = sorted(Materia.values)
+
         dados = {
-             'listas': listas
-         }
+            'listas': listas,
+            'materias': materias
+        }
         return render(request, 'usuarios/dashboard.html', dados)
 
     else:
