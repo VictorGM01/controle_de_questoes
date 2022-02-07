@@ -3,6 +3,9 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ lista.nome_da_lista }} de {{ lista.materia }}</h1>
+            <a href="{% url 'editar-lista' lista.id %}">
+                <button class="btn btn-secondary">Editar</button>
+            </a>
         </div>
     </section>
     <div class="container">
