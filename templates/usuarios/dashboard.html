@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="get" action="{% url 'dashboard' %}"> {% csrf_token %}
                         <div class="form-group">
                             <label for="materia">Matéria</label>
                             <select name="materia" class="form-control">
@@ -35,11 +35,11 @@
                             <label for="tipo" class="col-form-label">Tipo da Lista:</label>
                             <input type="text" name="tipo" class="form-control">
                         </div>
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
                  </div>
             </div>
         </div>

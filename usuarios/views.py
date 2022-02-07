@@ -70,7 +70,19 @@ def login(request):
 def dashboard(request):
     if request.user.is_authenticated:
         id_user = request.user.id
-        listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)
+
+        materia = request.GET.get('materia')
+        tipo = request.GET.get('tipo')
+
+        if materia or tipo:
+
+            if not tipo:
+                tipo = 'simulado'
+
+            listas = Lista.objects.filter(materia=materia).filter(tipo__icontains=tipo).filter(usuario=id_user)
+
+        else:
+            listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)
 
         materias = sorted(Materia.values)
 
