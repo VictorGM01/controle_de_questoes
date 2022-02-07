@@ -28,14 +28,11 @@ def cadastro(request):
 
         return redirect('login')
 
-    if request.method == 'GET':
+    elif request.method == 'GET':
 
         if request.user.is_authenticated:
             return redirect('index')
 
-        return render(request, 'usuarios/cadastro.html')
-
-    else:
         return render(request, 'usuarios/cadastro.html')
 
 
@@ -68,8 +65,6 @@ def login(request):
             return redirect('index')
 
         return render(request, 'usuarios/login.html')
-
-    return render(request, 'usuarios/login.html')
 
 
 def dashboard(request):
