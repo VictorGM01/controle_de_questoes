@@ -34,3 +34,7 @@ def adicionar_registro(request):
     contexto = {"materias": sorted(Materia.values)}
 
     return render(request, 'acertos_e_erros/adicionar_registros.html', contexto)
+
+
+def detalhar_lista(request):
+    pass
