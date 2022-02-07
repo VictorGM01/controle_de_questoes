@@ -86,7 +86,7 @@ def dashboard(request):
                 listas = Lista.objects.filter(materia=materia).filter(tipo__icontains=tipo).filter(usuario=id_user)
 
         else:
-            listas = Lista.objects.order_by('-data_realizacao').filter(usuario=id_user)
+            listas = Lista.objects.order_by('data_realizacao').filter(usuario=id_user)
 
         materias = sorted(Materia.values)
 
