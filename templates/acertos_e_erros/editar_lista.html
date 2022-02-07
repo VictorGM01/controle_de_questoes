@@ -1,4 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <form method="POST" action="">{% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Matéria</label>
+            <select name="materia" class="form-control" id="exampleFormControlSelect1" required>
+                <option selected value="{{ lista.materia }}">{{ lista.materia }}</option>
+                {% for materia in materias %}
+                    {% if materia != lista.materia %}
+                    <option value="{{ materia }}">{{ materia }}</option>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nome_lista">Nome da Lista</label>
+            <input name="nome_lista" class="form-control" type="text" placeholder="Ex.: Lista 1" value="{{ lista.nome_da_lista }}" required>
+        </div>
+        <div class="form-group">
+            <label for="quantidade_questoes">N° de Questões</label>
+            <input name="quantidade_questoes" class="form-control" type="number" value="{{ lista.quantidade_questoes }}" placeholder="Ex.: 30" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo da Lista</label>
+            <input name="tipo" class="form-control" type="text" placeholder="Ex.: Simulado" value="{{ lista.tipo }}" required>
+        </div>
+        <div class="form-group">
+            <label for="acertos">Acertos</label>
+            <input name="acertos" class="form-control" type="number" placeholder="Ex.: 16" value="{{ lista.acertos }}" required>
+        </div>
+        <div class="form-group">
+            <label for="erros">Erros</label>
+            <input name="erros" class="form-control" type="number" placeholder="Ex.: 14" value="{{ lista.erros }}" required>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição do Erro</label>
+            <input name="descricao" class="form-control" type="text" placeholder="Descreva seu(s) erro(s)" value="{{ lista.descricao_erros }}">
+        </div>
+        <div class="form-group">
+            <label for="time">Tempo de Realização</label>
+            <input name="time" class="form-control" type="number" placeholder="Ex.: 60 minutos" value="{{ lista.tempo_realizacao }}" required>
+        </div>
+        <button style="margin-bottom: 2rem" type="submit" class="btn btn-success">Editar</button>
+    </form>
 {% endblock %}
