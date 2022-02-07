@@ -47,4 +47,9 @@ def detalhar_lista(request, id_lista):
 
 
 def editar_lista(request, id_lista):
-    pass
+    lista_a_editar = get_object_or_404(Lista, pk=id_lista)
+    contexto = {
+        'lista': lista_a_editar
+    }
+
+    return render(request, 'acertos_e_erros/editar_lista.html', contexto)
