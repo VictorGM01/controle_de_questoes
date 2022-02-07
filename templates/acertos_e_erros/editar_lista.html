@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method="POST" action="">{% csrf_token %}
+    <form method="POST" action="{% url 'atualizar-lista' %}">{% csrf_token %}
+        <input type="text" name="lista_id" value="{{lista.id}}" hidden>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Matéria</label>
             <select name="materia" class="form-control" id="exampleFormControlSelect1" required>

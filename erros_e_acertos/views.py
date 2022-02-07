@@ -58,4 +58,25 @@ def editar_lista(request, id_lista):
 
 
 def atualizar_lista(request):
-    pass
+    if request.method == 'POST':
+        lista_id = request.POST['lista_id']
+
+        lista_a_atualizar = get_object_or_404(Lista, pk=lista_id)
+
+        lista_a_atualizar.materia = request.POST['materia']
+        lista_a_atualizar.nome_da_lista = request.POST['nome_lista']
+        lista_a_atualizar.quantidade_questoes = request.POST['quantidade_questoes']
+        lista_a_atualizar.tipo = request.POST['tipo']
+        lista_a_atualizar.acertos = request.POST['acertos']
+        lista_a_atualizar.erros = request.POST['erros']
+        lista_a_atualizar.descricao_erros = request.POST['descricao']
+        lista_a_atualizar.tempo_realizacao = request.POST['time']
+        lista_a_atualizar.data_realizacao = lista_a_atualizar.data_realizacao
+        lista_a_atualizar.usuario = lista_a_atualizar.usuario
+
+        lista_a_atualizar.save()
+
+        return redirect('detalhes-listas')
+
+    else:
+        return redirect('index')
