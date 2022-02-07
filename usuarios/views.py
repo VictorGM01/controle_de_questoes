@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from erros_e_acertos.models import Lista, Materia
+from django.core.paginator import Paginator
 
 
 def cadastro(request):
@@ -90,8 +91,14 @@ def dashboard(request):
 
         materias = sorted(Materia.values)
 
+        paginator = Paginator(listas, 5)
+
+        pagina = request.GET.get('page')
+
+        listas_por_pagina = paginator.get_page(pagina)
+
         dados = {
-            'listas': listas,
+            'listas': listas_por_pagina,
             'materias': materias
         }
         return render(request, 'usuarios/dashboard.html', dados)

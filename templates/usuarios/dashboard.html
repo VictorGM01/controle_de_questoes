@@ -76,4 +76,22 @@
         </tbody>
     </table>
 
+    {% if listas.has_other_pages %}
+    <ul class="pagination">
+        {% if listas.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ listas.previous_page_number }}"><<</a></li>
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href=""><<</a></li>
+        {% endif %}
+        {% for pagina in listas.paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="?page={{ pagina }}">{{ pagina }}</a></li>
+        {% endfor %}
+        {% if listas.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ listas.next_page_number }}">>></a></li>
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href="">>></a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
 {% endblock %}
