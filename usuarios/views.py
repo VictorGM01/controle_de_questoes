@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from erros_e_acertos.models import Lista, Materia
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def cadastro(request):
@@ -74,13 +75,18 @@ def dashboard(request):
 
         materia = request.GET.get('materia')
         tipo = request.GET.get('tipo')
+        nome = request.GET.get('nome')
 
-        if materia or tipo:
+        if nome:
+            listas = Lista.objects.filter(
+                Q(nome_da_lista__icontains=nome) | Q(tipo__icontains=nome)).filter(usuario=id_user)
+
+        elif materia or tipo:
 
             if not tipo and materia != 'todas':
                 listas = Lista.objects.filter(materia=materia).filter(usuario=id_user)
 
-            if materia == 'todas':
+            elif materia == 'todas':
                 listas = Lista.objects.filter(tipo__icontains=tipo).filter(usuario=id_user)
 
             else:
