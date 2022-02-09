@@ -39,11 +39,16 @@ def adicionar_registro(request):
 def detalhar_lista(request, id_lista):
     lista_a_exibir = get_object_or_404(Lista, pk=id_lista)
 
-    contexto = {
-        'lista': lista_a_exibir
-    }
+    if lista_a_exibir.usuario.id == request.user.id:
 
-    return render(request, 'acertos_e_erros/detalhes_lista.html', contexto)
+        contexto = {
+            'lista': lista_a_exibir
+        }
+
+        return render(request, 'acertos_e_erros/detalhes_lista.html', contexto)
+
+    else:
+        return redirect('dashboard')
 
 
 def editar_lista(request, id_lista):
