@@ -13,3 +13,6 @@ Aplicação para ajudar no preparo para o ENEM e demais vestibulares: Controle d
 - [x] Detalhar dados da lista
 - [x] Detalhar erros
 - [ ] Mostra mensagem de erro no preenchimento dos formulários de criação/edição
+
+## Status do projeto
+🛠 Projeto em produção 🛠
