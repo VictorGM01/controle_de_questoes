@@ -53,13 +53,17 @@ def detalhar_lista(request, id_lista):
 
 def editar_lista(request, id_lista):
     lista_a_editar = get_object_or_404(Lista, pk=id_lista)
-    materias = sorted(Materia.values)
-    contexto = {
-        'lista': lista_a_editar,
-        'materias': materias
-    }
 
-    return render(request, 'acertos_e_erros/editar_lista.html', contexto)
+    if lista_a_editar.usuario.id == request.user.id:
+        materias = sorted(Materia.values)
+        contexto = {
+            'lista': lista_a_editar,
+            'materias': materias
+        }
+
+        return render(request, 'acertos_e_erros/editar_lista.html', contexto)
+    else:
+        return redirect('dashboard')
 
 
 def atualizar_lista(request):
