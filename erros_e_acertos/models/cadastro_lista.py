@@ -15,3 +15,4 @@ class Lista(models.Model):
     descricao_erros = models.CharField(max_length=300, blank=True, null=True)
     tempo_realizacao = models.IntegerField()
     data_realizacao = models.DateField(default=datetime.today)
+    data_revisao = models.DateField(null=True, blank=True)

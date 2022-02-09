@@ -73,6 +73,13 @@ def atualizar_lista(request):
         lista_a_atualizar.tempo_realizacao = request.POST['time']
         lista_a_atualizar.data_realizacao = lista_a_atualizar.data_realizacao
         lista_a_atualizar.usuario = lista_a_atualizar.usuario
+        data_revisao = request.POST['data_revisao']
+
+        if data_revisao != '':
+            lista_a_atualizar.data_revisao = request.POST['data_revisao']
+
+        else:
+            lista_a_atualizar.data_revisao = lista_a_atualizar.data_revisao
 
         lista_a_atualizar.save()
 

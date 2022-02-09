@@ -3,6 +3,11 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ lista.nome_da_lista }} de {{ lista.materia }}</h1>
+            {% if lista.data_revisao %}
+                <h4>Data da última revisão: {{ lista.data_revisao }}</h4>
+            {% else %}
+                <h4>Lista ainda não revisada</h4>
+            {% endif %}
             <a href="{% url 'editar-lista' lista.id %}">
                 <button class="btn btn-secondary">Editar</button>
             </a>

@@ -42,6 +42,10 @@
             <label for="time">Tempo de Realização</label>
             <input name="time" class="form-control" type="number" placeholder="Ex.: 60 minutos" value="{{ lista.tempo_realizacao }}" required>
         </div>
+        <div class="form-group">
+            <label for="data_revisao">Data da Última Revisão</label>
+            <input name="data_revisao" class="form-control" type="date">
+        </div>
         <button style="margin-bottom: 2rem" type="submit" class="btn btn-success">Editar</button>
     </form>
 {% endblock %}
