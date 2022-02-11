@@ -58,6 +58,10 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                {% if admin %}
+                <th>Usuário</th>
+                {% else %}
+                {% endif %}
                 <th>Lista</th>
                 <th>Matéria</th>
                 <th>Tipo da Lista</th>
@@ -70,6 +74,10 @@
         <tbody>
             {% for lista in listas %}
                 <tr>
+                    {% if admin %}
+                    <td>{{ lista.usuario }}</td>
+                    {% else %}
+                    {% endif %}
                     <td><a href="{% url 'detalhes-listas' lista.id%}">{{ lista.nome_da_lista }}</a></td>
                     <td>{{ lista.materia }}</td>
                     <td>{{ lista.tipo }}</td>

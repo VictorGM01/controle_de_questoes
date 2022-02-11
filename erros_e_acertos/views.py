@@ -39,7 +39,7 @@ def adicionar_registro(request):
 def detalhar_lista(request, id_lista):
     lista_a_exibir = get_object_or_404(Lista, pk=id_lista)
 
-    if lista_a_exibir.usuario.id == request.user.id:
+    if lista_a_exibir.usuario.id == request.user.id or request.user.is_superuser:
 
         contexto = {
             'lista': lista_a_exibir
@@ -54,7 +54,7 @@ def detalhar_lista(request, id_lista):
 def editar_lista(request, id_lista):
     lista_a_editar = get_object_or_404(Lista, pk=id_lista)
 
-    if lista_a_editar.usuario.id == request.user.id:
+    if lista_a_editar.usuario.id == request.user.id or request.user.is_superuser:
         materias = sorted(Materia.values)
         contexto = {
             'lista': lista_a_editar,

@@ -70,12 +70,12 @@ def login(request):
 
 
 def dashboard(request):
-    if request.user.is_authenticated:
-        id_user = request.user.id
+    materia = request.GET.get('materia')
+    tipo = request.GET.get('tipo')
+    nome = request.GET.get('nome')
 
-        materia = request.GET.get('materia')
-        tipo = request.GET.get('tipo')
-        nome = request.GET.get('nome')
+    if request.user.is_authenticated and not request.user.is_superuser:
+        id_user = request.user.id
 
         if nome:
             listas = Lista.objects.filter(
@@ -106,6 +106,42 @@ def dashboard(request):
         dados = {
             'listas': listas_por_pagina,
             'materias': materias
+        }
+        return render(request, 'usuarios/dashboard.html', dados)
+
+    elif request.user.is_superuser:
+        if nome:
+            listas = Lista.objects.filter(
+                Q(nome_da_lista__icontains=nome) | Q(tipo__icontains=nome))
+
+        elif materia or tipo:
+
+            if not tipo and materia != 'todas':
+                listas = Lista.objects.filter(materia=materia)
+
+            elif materia == 'todas':
+                listas = Lista.objects.filter(tipo__icontains=tipo)
+
+            else:
+                listas = Lista.objects.filter(materia=materia).filter(tipo__icontains=tipo)
+
+        else:
+            listas = Lista.objects.order_by('data_realizacao')
+
+        materias = sorted(Materia.values)
+
+        paginator = Paginator(listas, 5)
+
+        pagina = request.GET.get('page')
+
+        listas_por_pagina = paginator.get_page(pagina)
+
+        usuario_admin = request.user
+
+        dados = {
+            'listas': listas_por_pagina,
+            'materias': materias,
+            'admin': usuario_admin
         }
         return render(request, 'usuarios/dashboard.html', dados)
 
