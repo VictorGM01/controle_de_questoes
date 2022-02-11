@@ -17,6 +17,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['controle-questoes.herokuapp.com']
 
+SESSION_COOKIE_AGE = 3600  # 1 hora
+
+SESSION_SAVE_EVERY_REQUEST = True
+
 
 # Application definition
 
