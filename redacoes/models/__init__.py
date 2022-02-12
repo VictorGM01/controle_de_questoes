@@ -1,2 +1,3 @@
 from .generos import *
-from .redacoes import *
+from .redacao import *
+from .vesibulares import *

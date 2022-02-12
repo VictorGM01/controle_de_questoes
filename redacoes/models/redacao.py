@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from .generos import Genero
+from .vesibulares import Vestibular
 from django.contrib.auth.models import User
 
 
@@ -8,7 +9,7 @@ class Redaction(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     genero = models.TextField(max_length=30, choices=Genero.choices)
     tema = models.CharField(max_length=100)
-    vestibular = models.CharField(max_length=40)
+    vestibular = models.TextField(max_length=15, choices=Vestibular.choices)
     data_realizacao = models.DateField(default=datetime.today)
     nota = models.IntegerField(blank=True, null=True)
     correcao = models.CharField(max_length=400, blank=True, null=True)
