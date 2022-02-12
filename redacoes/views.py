@@ -21,9 +21,12 @@ def dashboard_redacoes(request):
 
         redacoes_por_pagina = paginator.get_page(pagina)
 
-        dados = {
+        contexto = {
             'redacoes': redacoes_por_pagina,
             'generos': generos,
             'vestibulares': vestibulares
         }
-        return render(request, 'redacoes/dashboard_redacoes.html', dados)
+        return render(request, 'redacoes/dashboard_redacoes.html', contexto)
+
+    else:
+        return redirect('index')

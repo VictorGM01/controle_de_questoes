@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Redaction
 
-# Register your models here.
+
+@admin.register(Redaction)
+class RedacaoAdmin(admin.ModelAdmin):
+    list_display = ['tema', 'genero']
