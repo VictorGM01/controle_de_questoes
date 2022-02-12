@@ -85,4 +85,17 @@ def detalhar(request, id_redacao):
 
 
 def editar(request, id_redacao):
-    pass
+    redacao_a_editar = get_object_or_404(Redaction, pk=id_redacao)
+
+    if redacao_a_editar.usuario.id == request.user.id:
+        generos = sorted(Genero.values)
+        vestibulares = sorted(Vestibular.values)
+        contexto = {
+            'generos': generos,
+            'vestibulares': vestibulares
+        }
+
+        return render(request, 'redacoes/editar_redacao.html', contexto)
+
+    else:
+        return redirect('index')

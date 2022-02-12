@@ -9,7 +9,7 @@
             {% else %}
                 <h4>Redação ainda não corrigida</h4>
             {% endif %}
-            <a href="#">
+            <a href="{% url 'editar-redacao' redacao.id %}">
                 <button style="margin-top: 1rem" class="btn btn-outline-primary">Editar</button>
             </a>
             {% if redacao.correcao %}
