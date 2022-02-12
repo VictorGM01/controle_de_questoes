@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Vestibular</label>
-            <select name="genero" class="form-control" id="exampleFormControlSelect1" required>
+            <select name="vestibular" class="form-control" id="exampleFormControlSelect1" required>
                 <option selected disabled value="">Selecione</option>
                 {% for vest in vestibulares %}
                     <option value="{{ vest }}">{{ vest }}</option>
@@ -21,28 +21,28 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="nome_lista">Tema da Redação</label>
-            <input name="nome_lista" class="form-control" type="text" placeholder="Ex.: Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil" required>
+            <label for="tema">Tema da Redação</label>
+            <input name="tema" class="form-control" type="text" placeholder="Ex.: Invisibilidade e registro civil: garantia de acesso à cidadania no Brasil" required>
         </div>
         <div class="form-group">
-            <label for="quantidade_questoes">Nota</label>
-            <input name="quantidade_questoes" class="form-control" type="number" placeholder="Ex.: 850" required>
+            <label for="nota">Nota</label>
+            <input name="nota" class="form-control" type="number" placeholder="Ex.: 850" required>
         </div>
         <div class="form-group">
             <label for="data">Data da Realização</label>
             <input name="data" class="form-control" type="date" required>
         </div>
         <div class="form-group">
-            <label for="quantidade_questoes">Tempo de Realização</label>
-            <input name="quantidade_questoes" class="form-control" type="number" placeholder="Ex.: 60 minutos" required>
+            <label for="tempo">Tempo de Realização</label>
+            <input name="tempo" class="form-control" type="number" placeholder="Ex.: 60 minutos" required>
         </div>
         <div class="form-group">
-            <label for="nome_lista">Correção (Opcional)</label>
-            <input name="nome_lista" class="form-control" type="text" placeholder="Adicione a correção da sua redação">
+            <label for="correção">Correção (Opcional)</label>
+            <input name="correção" class="form-control" type="text" placeholder="Adicione a correção da sua redação">
         </div>
         <div class="form-group">
-            <label for="data">Data da Correção</label>
-            <input name="data" class="form-control" type="date">
+            <label for="data_correcao">Data da Correção (Opcional)</label>
+            <input name="data_correcao" class="form-control" type="date">
         </div>
         <button style="margin-bottom: 1rem" type="submit" class="btn btn-success">Adicionar</button>
     </form>

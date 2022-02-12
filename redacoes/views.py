@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -6,6 +6,28 @@ from .models import Vestibular, Genero, Redaction
 
 
 def adicionar(request):
+    if request.method == 'POST':
+        tema = request.POST['tema']
+        genero = request.POST['genero']
+        vestibular = request.POST['vestibular']
+        nota = request.POST['nota']
+        data_realizacao = request.POST['data']
+        tempo = request.POST['tempo']
+        correcao = request.POST.get('correção')
+        data_correcao = request.POST.get('data_correcao')
+
+        if data_correcao == '':
+            data_correcao = None
+
+        user = get_object_or_404(User, pk=request.user.id)
+
+        nova_redacao = Redaction.objects.create(usuario=user, tema=tema, genero=genero, vestibular=vestibular,
+                                                nota=nota, data_realizacao=data_realizacao, tempo_de_realizacao=tempo,
+                                                correcao=correcao, data_da_correcao=data_correcao)
+
+        nova_redacao.save()
+
+        return redirect('dashboard-redacoes')
 
     contexto = {
         'generos': sorted(Genero.values),
