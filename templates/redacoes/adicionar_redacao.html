@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h3 style="text-align: center">Adicionar Registro de Redações Realizadas</h3>
     <form method="POST" action="{% url 'add-redacoes' %}">{% csrf_token %}
         <div class="form-group">
             <label for="exampleFormControlSelect1">Gênero da Redação</label>
@@ -43,6 +44,6 @@
             <label for="data">Data da Correção</label>
             <input name="data" class="form-control" type="date">
         </div>
-        <button type="submit" class="btn btn-success">Adicionar</button>
+        <button style="margin-bottom: 1rem" type="submit" class="btn btn-success">Adicionar</button>
     </form>
 {% endblock %}
