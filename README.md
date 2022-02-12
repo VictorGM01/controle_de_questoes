@@ -12,6 +12,11 @@ Aplicação para ajudar no preparo para o ENEM e demais vestibulares - Gerenciad
 - [x] Adicionar data de revisão
 - [x] Detalhar dados da lista
 - [x] Detalhar erros
+- [ ] Criar registros de redações realizadas
+- [ ] Editar registro de redações
+- [ ] Filtrar as redações por gênero, vestibular e notas (máxima e mínima)
+- [ ] Buscar redações por gênero/tema
+- [ ] Detalhar dados da redação
 - [ ] Mostrar mensagens de erro no preenchimento dos formulários de criação/edição
 
 ## Status do Projeto 💹
