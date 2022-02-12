@@ -5,6 +5,10 @@ from django.contrib import auth
 from .models import Vestibular, Genero, Redaction
 
 
+def adicionar(request):
+    return render(request, 'redacoes/adicionar_redacao.html')
+
+
 def dashboard_redacoes(request):
     if request.user.is_authenticated:
         id_user = request.user.id

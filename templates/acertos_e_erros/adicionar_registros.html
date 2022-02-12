@@ -1,4 +1,4 @@
-{{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% block content %}
     <form method="POST" action="{% url 'add-registro' %}">{% csrf_token %}
         <div class="form-group">
