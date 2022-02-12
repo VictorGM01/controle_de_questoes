@@ -6,7 +6,13 @@ from .models import Vestibular, Genero, Redaction
 
 
 def adicionar(request):
-    return render(request, 'redacoes/adicionar_redacao.html')
+
+    contexto = {
+        'generos': sorted(Genero.values),
+        'vestibulares': sorted(Vestibular.values)
+    }
+
+    return render(request, 'redacoes/adicionar_redacao.html', contexto)
 
 
 def dashboard_redacoes(request):
