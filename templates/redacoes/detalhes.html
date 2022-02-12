@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ redacao.tema }}</h1>
+            <hr class="my-2">
+            {% if redacao.nota %}
+                <h4><strong>Nota:</strong> {{ redacao.nota }}</h4>
+            {% else %}
+                <h4>Redação ainda não corrigida</h4>
+            {% endif %}
+            <a href="#">
+                <button style="margin-top: 1rem" class="btn btn-outline-primary">Editar</button>
+            </a>
+            {% if redacao.correcao %}
+                <a href="#">
+                    <button style="margin-top: 1rem" class="btn btn-outline-info">Ver Correção</button>
+                </a>
+            {% else %}
+                <a href="#">
+                    <button style="margin-top: 1rem" class="btn btn-outline-success">Adicionar Correção</button>
+                </a>
+            {% endif %}
+        </div>
+    </section>
+    <div class="container">
+        <div class="col-md-4">
+            <h6><strong>Vestibular:</strong> {{ redacao.vestibular }}</h6>
+            <h6><strong>Gênero:</strong> {{ redacao.genero }}</h6>
+            <h6><strong>Data da Realização:</strong> {{ redacao.data_realizacao }}</h6>
+            <h6><strong>Duração:</strong> {{ redacao.tempo_de_realizacao }} minutos</h6>
+        </div>
+    </div>
 
 {% endblock %}
