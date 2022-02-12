@@ -71,5 +71,14 @@ def dashboard_redacoes(request):
         return redirect('index')
 
 
-def detalhar(request):
-    pass
+def detalhar(request, id_redacao):
+    redacao_a_editar = get_object_or_404(Redaction, pk=id_redacao)
+
+    if redacao_a_editar.usuario.id == request.user.id:
+        contexto = {
+            'redacao': redacao_a_editar
+        }
+
+        return render(request, 'redacoes/detalhes.html', contexto)
+    else:
+        return redirect('index')
