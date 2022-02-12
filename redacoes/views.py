@@ -69,3 +69,7 @@ def dashboard_redacoes(request):
 
     else:
         return redirect('index')
+
+
+def detalhar(request):
+    pass
