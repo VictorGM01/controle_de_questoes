@@ -9,7 +9,14 @@ def dashboard_redacoes(request):
     if request.user.is_authenticated:
         id_user = request.user.id
 
-        redacoes = Redaction.objects.order_by('data_realizacao').filter(usuario=id_user)
+        tema = request.GET.get('tema')
+
+        if tema:
+            redacoes = Redaction.objects.order_by(
+                'data_realizacao').filter(usuario=id_user).filter(tema__icontains=tema)
+
+        else:
+            redacoes = Redaction.objects.order_by('data_realizacao').filter(usuario=id_user)
 
         generos = sorted(Genero.values)
 
