@@ -82,3 +82,7 @@ def detalhar(request, id_redacao):
         return render(request, 'redacoes/detalhes.html', contexto)
     else:
         return redirect('index')
+
+
+def editar(request, id_redacao):
+    pass
