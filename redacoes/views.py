@@ -105,11 +105,24 @@ def editar(request, id_redacao):
         else:
             data_realizacao = f'{redacao_a_editar.data_realizacao.year}-{redacao_a_editar.data_realizacao.month}-{redacao_a_editar.data_realizacao.day}'
 
+        if redacao_a_editar.data_da_correcao:
+            if redacao_a_editar.data_da_correcao.month in datas:
+                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-0{redacao_a_editar.data_da_correcao.month}-{redacao_a_editar.data_da_correcao.day}'
+            elif redacao_a_editar.data_da_correcao.day in datas:
+                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-{redacao_a_editar.data_da_correcao.month}-0{redacao_a_editar.data_da_correcao.day}'
+            elif redacao_a_editar.data_da_correcao.day in datas and redacao_a_editar.data_da_correcao.month in datas:
+                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-0{redacao_a_editar.data_da_correcao.month}-0{redacao_a_editar.data_da_correcao.day}'
+            else:
+                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-{redacao_a_editar.data_da_correcao.month}-{redacao_a_editar.data_da_correcao.day}'
+        else:
+            data_correcao = None
+
         contexto = {
             'generos': generos,
             'vestibulares': vestibulares,
             'data_realizacao': data_realizacao,
-            'redacao': redacao_a_editar
+            'redacao': redacao_a_editar,
+            'data_correcao': data_correcao
         }
 
         return render(request, 'redacoes/editar_redacao.html', contexto)

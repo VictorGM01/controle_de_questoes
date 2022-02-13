@@ -44,11 +44,19 @@
         </div>
         <div class="form-group">
             <label for="correção">Correção</label>
-            <input name="correção" class="form-control" type="text" value="{{ redacao.correcao }}" placeholder="Adicione a correção da sua redação">
+            {% if redacao.correcao %}
+            <textarea name="correção" class="form-control">{{ redacao.correcao }}</textarea>
+            {% else %}
+            <textarea name="correção" class="form-control" placeholder="Sem correção adicionada"></textarea>
+            {% endif %}
         </div>
         <div class="form-group">
             <label for="data_correcao">Data da Correção</label>
-            <input name="data_correcao" class="form-control" type="date">
+            {% if data_correcao %}
+            <input name="data_correcao" class="form-control" type="date" value="{{ data_correcao }}">
+            {% else %}
+            <input name="data_correcao" class="form-control" type="date"    >
+            {% endif %}
         </div>
         <button style="margin-bottom: 1rem" type="submit" class="btn btn-success">Adicionar</button>
     </form>
