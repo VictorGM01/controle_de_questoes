@@ -97,7 +97,7 @@ def dashboard(request):
 
         materias = sorted(Materia.values)
 
-        paginator = Paginator(listas, 5)
+        paginator = Paginator(listas, 3)
 
         pagina = request.GET.get('page')
 
@@ -130,7 +130,7 @@ def dashboard(request):
 
         materias = sorted(Materia.values)
 
-        paginator = Paginator(listas, 5)
+        paginator = Paginator(listas, 3)
 
         pagina = request.GET.get('page')
 
