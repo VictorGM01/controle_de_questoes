@@ -35,7 +35,11 @@
                     <td style='vertical-align:middle'>{{ redacao.tema }}</td>
                     <td style='vertical-align:middle'>{{ redacao.genero }}</td>
                     <td style='vertical-align:middle'>{{ redacao.vestibular }}</td>
+                    {% if redacao.nota %}
                     <td style='vertical-align:middle'>{{ redacao.nota }}</td>
+                    {% else %}
+                    <td style='vertical-align:middle'>---</td>
+                    {% endif %}
                     <td style='text-align:center; vertical-align:middle'><a href="{% url 'detalhes-redacoes' redacao.id%}" class="btn btn-primary">Ver</a></td>
                 </tr>
             {% endfor %}
