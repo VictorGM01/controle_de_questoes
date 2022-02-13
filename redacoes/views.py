@@ -91,29 +91,10 @@ def editar(request, id_redacao):
         generos = sorted(Genero.values)
         vestibulares = sorted(Vestibular.values)
 
-        datas = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-        if redacao_a_editar.data_realizacao.month in datas and redacao_a_editar.data_realizacao.day in datas:
-            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-0{redacao_a_editar.data_realizacao.month}-0{redacao_a_editar.data_realizacao.day}'
-
-        elif redacao_a_editar.data_realizacao.month in datas:
-            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-0{redacao_a_editar.data_realizacao.month}-{redacao_a_editar.data_realizacao.day}'
-
-        elif redacao_a_editar.data_realizacao.day in datas:
-            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-{redacao_a_editar.data_realizacao.month}-0{redacao_a_editar.data_realizacao.day}'
-
-        else:
-            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-{redacao_a_editar.data_realizacao.month}-{redacao_a_editar.data_realizacao.day}'
+        data_realizacao = redacao_a_editar.data_realizacao.strftime('%Y-%m-%d')
 
         if redacao_a_editar.data_da_correcao:
-            if redacao_a_editar.data_da_correcao.month in datas:
-                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-0{redacao_a_editar.data_da_correcao.month}-{redacao_a_editar.data_da_correcao.day}'
-            elif redacao_a_editar.data_da_correcao.day in datas:
-                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-{redacao_a_editar.data_da_correcao.month}-0{redacao_a_editar.data_da_correcao.day}'
-            elif redacao_a_editar.data_da_correcao.day in datas and redacao_a_editar.data_da_correcao.month in datas:
-                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-0{redacao_a_editar.data_da_correcao.month}-0{redacao_a_editar.data_da_correcao.day}'
-            else:
-                data_correcao = f'{redacao_a_editar.data_da_correcao.year}-{redacao_a_editar.data_da_correcao.month}-{redacao_a_editar.data_da_correcao.day}'
+            data_correcao = redacao_a_editar.data_da_correcao.strftime('%Y-%m-%d')
         else:
             data_correcao = None
 
