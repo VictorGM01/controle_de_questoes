@@ -64,8 +64,8 @@
                 {% endif %}
                 <th>Lista</th>
                 <th>Matéria</th>
-                <th>Tipo da Lista</th>
-                <th>N° de Questões</th>
+                <th>Tipo</th>
+                <th>Questões</th>
                 <th>Acertos</th>
                 <th>Erros</th>
                 <th>Data da Realização</th>
@@ -78,13 +78,13 @@
                     <td>{{ lista.usuario }}</td>
                     {% else %}
                     {% endif %}
-                    <td><a href="{% url 'detalhes-listas' lista.id%}">{{ lista.nome_da_lista }}</a></td>
-                    <td>{{ lista.materia }}</td>
-                    <td>{{ lista.tipo }}</td>
-                    <td>{{ lista.quantidade_questoes }}</td>
-                    <td>{{ lista.acertos }}</td>
-                    <td>{{ lista.erros }}</td>
-                    <td>{{ lista.data_realizacao }}</td>
+                    <td style='vertical-align:middle'><a href="{% url 'detalhes-listas' lista.id%}">{{ lista.nome_da_lista }}</a></td>
+                    <td style='vertical-align:middle'>{{ lista.materia }}</td>
+                    <td style='vertical-align:middle'>{{ lista.tipo }}</td>
+                    <td style='vertical-align:middle'>{{ lista.quantidade_questoes }}</td>
+                    <td style='vertical-align:middle'>{{ lista.acertos }}</td>
+                    <td style='vertical-align:middle'>{{ lista.erros }}</td>
+                    <td style='vertical-align:middle'>{{ lista.data_realizacao }}</td>
                 </tr>
             {% endfor %}
         </tbody>
