@@ -110,3 +110,38 @@ def editar(request, id_redacao):
 
     else:
         return redirect('index')
+
+
+def atualizar(request):
+    if request.method == 'POST':
+        id_redacao = request.POST['id_redacao']
+
+        redacao = Redaction.objects.get(pk=id_redacao)
+
+        redacao.tema = request.POST['tema']
+        redacao.genero = request.POST['genero']
+        redacao.vestibular = request.POST['vestibular']
+        nota = request.POST['nota']
+        redacao.data_realizacao = request.POST['data']
+        redacao.tempo_de_realizacao = request.POST['tempo']
+        redacao.correcao = request.POST['correção']
+        data_da_correcao = request.POST['data_correcao']
+
+        if nota != '':
+            redacao.nota = nota
+
+        else:
+            redacao.nota = None
+
+        if data_da_correcao != '':
+            redacao.data_da_correcao = data_da_correcao
+
+        else:
+            redacao.data_da_correcao = None
+
+        redacao.save()
+
+        return redirect('dashboard-redacoes')
+
+    else:
+        return redirect('index')
