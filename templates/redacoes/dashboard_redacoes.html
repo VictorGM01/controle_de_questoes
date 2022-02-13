@@ -9,6 +9,51 @@
              </div>
          </div>
     </div>
+    <button style="float: right; margin-left: 1rem" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Filtrar</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Filtar Por Matéria e Tipo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="get" action="{% url 'dashboard-redacoes' %}">
+                        <div class="form-group">
+                            <label for="genero">Gênero</label>
+                            <select name="genero" class="form-control">
+                                <option value="todos">Todos</option>
+                                {% for genero in generos %}
+                                    <option value="{{genero}}">{{genero}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vest">Vestibular</label>
+                            <select name="vest" class="form-control">
+                                <option value="todos">Todos</option>
+                                {% for vest in vestibulares %}
+                                    <option value="{{vest}}">{{vest}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nota_min" class="col-form-label">Nota Mínima</label>
+                            <input type="number" name="nota_min" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nota_max" class="col-form-label">Nota Máxima</label>
+                            <input type="number" name="nota_max" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success">Filtrar</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <a href="{% url 'add-redacoes' %}">
         <button type="button" class="btn btn-success" style="float: right; margin-bottom: 2rem">Adicionar</button>
     </a>
@@ -40,7 +85,7 @@
                     {% else %}
                     <td style='vertical-align:middle'>---</td>
                     {% endif %}
-                    <td style='text-align:center; vertical-align:middle'><a href="{% url 'detalhes-redacoes' redacao.id%}" class="btn btn-primary">Ver</a></td>
+                    <td style='text-align:center; vertical-align:middle'><a href="{% url 'detalhes-redacoes' redacao.id%}" class="btn btn-outline-primary">Ver</a></td>
                 </tr>
             {% endfor %}
         </tbody>

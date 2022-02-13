@@ -41,11 +41,37 @@ def dashboard_redacoes(request):
     if request.user.is_authenticated:
         id_user = request.user.id
 
-        tema = request.GET.get('tema')
+        tema = request.GET.get('tema')  # Tema buscado
+        genero = request.GET.get('genero')  # Gênero do filtro
+        vestibular = request.GET.get('vest')  # Vestibular do filtro
+        nota_min = request.GET.get('nota_min')  # Nota mínima do filtro
+        nota_max = request.GET.get('nota_max')  # Nota máxima do filtro
 
         if tema:
             redacoes = Redaction.objects.order_by(
                 'data_realizacao').filter(usuario=id_user).filter(tema__icontains=tema)
+
+        elif genero or vestibular or nota_min or nota_max:
+            if nota_min == '':
+                nota_min = 0
+            if nota_max == '':
+                nota_max = 1000
+
+            if genero == 'todos' and vestibular != 'todos':
+                redacoes = Redaction.objects.filter(nota__gte=nota_min).filter(nota__lte=nota_max).filter(
+                    vestibular__icontains=vestibular).filter(usuario=id_user)
+
+            elif vestibular == 'todos' and genero == 'todos':
+                redacoes = Redaction.objects.filter(nota__gte=nota_min).filter(nota__lte=nota_max).filter(
+                    usuario=id_user)
+
+            elif vestibular == 'todos' and genero != 'todos':
+                redacoes = Redaction.objects.filter(nota__gte=nota_min).filter(nota__lte=nota_max).filter(
+                    genero__icontains=genero).filter(usuario=id_user)
+
+            else:
+                redacoes = Redaction.objects.filter(nota__gte=nota_min).filter(nota__lte=nota_max).filter(
+                    genero__icontains=genero).filter(vestibular__icontains=vestibular).filter(usuario=id_user)
 
         else:
             redacoes = Redaction.objects.order_by('data_realizacao').filter(usuario=id_user)
