@@ -1,6 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
-
-
-
+    <h3 style="text-align: center">Editar Registro de Redação</h3>
+    <form method="POST" action="{% url 'editar-redacao' redacao.id %}">{% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Gênero da Redação</label>
+            <select name="genero" class="form-control" id="exampleFormControlSelect1" required>
+                <option selected value="{{ redacao.genero }}">{{ redacao.genero }}</option>
+                {% for genero in generos %}
+                    {% if genero != redacao.genero %}
+                    <option value="{{ genero }}">{{ genero }}</option>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Vestibular</label>
+            <select name="vestibular" class="form-control" id="exampleFormControlSelect1" required>
+                <option selected value="{{ redacao.vestibular }}">{{ redacao.vestibular }}</option>
+                {% for vest in vestibulares %}
+                    {% if vest != redacao.vestibular %}
+                    <option value="{{ vest }}">{{ vest }}</option>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tema">Tema da Redação</label>
+            <input name="tema" class="form-control" type="text" value="{{ redacao.tema }}" required>
+        </div>
+        <div class="form-group">
+            <label for="nota">Nota</label>
+            <input name="nota" class="form-control" type="number" value="{{ redacao.nota }}">
+        </div>
+        <div class="form-group">
+            <label for="data">Data da Realização</label>
+            <input name="data" class="form-control" type="date" value="{{ data_realizacao }}">
+        </div>
+        <div class="form-group">
+            <label for="tempo">Tempo de Realização</label>
+            <input name="tempo" class="form-control" type="number" value="{{ redacao.tempo_de_realizacao }}" required>
+        </div>
+        <div class="form-group">
+            <label for="correção">Correção</label>
+            <input name="correção" class="form-control" type="text" value="{{ redacao.correcao }}" placeholder="Adicione a correção da sua redação">
+        </div>
+        <div class="form-group">
+            <label for="data_correcao">Data da Correção</label>
+            <input name="data_correcao" class="form-control" type="date">
+        </div>
+        <button style="margin-bottom: 1rem" type="submit" class="btn btn-success">Adicionar</button>
+    </form>
 {% endblock %}

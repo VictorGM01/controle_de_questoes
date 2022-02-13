@@ -90,9 +90,26 @@ def editar(request, id_redacao):
     if redacao_a_editar.usuario.id == request.user.id:
         generos = sorted(Genero.values)
         vestibulares = sorted(Vestibular.values)
+
+        datas = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        if redacao_a_editar.data_realizacao.month in datas and redacao_a_editar.data_realizacao.day in datas:
+            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-0{redacao_a_editar.data_realizacao.month}-0{redacao_a_editar.data_realizacao.day}'
+
+        elif redacao_a_editar.data_realizacao.month in datas:
+            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-0{redacao_a_editar.data_realizacao.month}-{redacao_a_editar.data_realizacao.day}'
+
+        elif redacao_a_editar.data_realizacao.day in datas:
+            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-{redacao_a_editar.data_realizacao.month}-0{redacao_a_editar.data_realizacao.day}'
+
+        else:
+            data_realizacao = f'{redacao_a_editar.data_realizacao.year}-{redacao_a_editar.data_realizacao.month}-{redacao_a_editar.data_realizacao.day}'
+
         contexto = {
             'generos': generos,
-            'vestibulares': vestibulares
+            'vestibulares': vestibulares,
+            'data_realizacao': data_realizacao,
+            'redacao': redacao_a_editar
         }
 
         return render(request, 'redacoes/editar_redacao.html', contexto)
