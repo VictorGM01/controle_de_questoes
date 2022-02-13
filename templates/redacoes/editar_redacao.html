@@ -45,9 +45,9 @@
         <div class="form-group">
             <label for="correção">Correção</label>
             {% if redacao.correcao %}
-            <textarea name="correção" class="form-control">{{ redacao.correcao }}</textarea>
+            <textarea name="correção" class="form-control" rows="4">{{ redacao.correcao }}</textarea>
             {% else %}
-            <textarea name="correção" class="form-control" placeholder="Sem correção adicionada"></textarea>
+            <textarea name="correção" class="form-control" placeholder="Sem correção adicionada" rows="4"></textarea>
             {% endif %}
         </div>
         <div class="form-group">
